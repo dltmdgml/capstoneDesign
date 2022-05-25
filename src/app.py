@@ -50,6 +50,7 @@ def score_frame(frame, model):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model.to(device)
     results = model(frame)
+    print(f"results: {results}")
     labels = results.xyxyn[0][:, -1].numpy()
     cord = results.xyxyn[0][:, :-1].numpy()
     return labels, cord
@@ -92,21 +93,6 @@ def plot_boxes(results, frame):
 
     return frame  # 인식된 객체 바운딩 박스 그린 후 frame 리턴
 
-def gen():
-    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # webcam
-    while 1:
-        ret, img = cap.read()
-        # img = cv2.flip(img, 1) #좌우 반전
-        results = score_frame(img, model)
-        frame = plot_boxes(results, img)
-        if frame is None:       
-            # img = cv2.resize(img, (0,0), fx=0.5, fy=0.5)
-            frame = cv2.imencode('.jpg', img)[1].tobytes()   # 객체가 추출되지 않아도 이미지 show
-        else:
-            # frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
-            frame = cv2.imencode('.jpg', frame)[1].tobytes()
-        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        time.sleep(0.01)
 # Flask 객체를 app에 할당
 app = Flask(__name__, static_url_path='/static')
 app.config['UPLOAD_VIDEO_FOLDER'] = UPLOAD_VIDEO_FOLDER
@@ -131,7 +117,22 @@ def Streaming():
 #실시간 영상 스트리밍
 @app.route('/video_feed')
 def video_feed():
-    return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    def generate(): # 데이터를 생성하는 생성기
+        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # webcam
+        while 1:
+            ret, img = cap.read()
+            # img = cv2.flip(img, 1) #좌우 반전
+            results = score_frame(img, model)
+            frame = plot_boxes(results, img)
+            if frame is None:       
+                frame = cv2.imencode('.jpg', img)[1].tobytes()   # 객체가 추출되지 않아도 이미지 show
+            else:
+                frame = cv2.imencode('.jpg', frame)[1].tobytes()
+            # yield 브라우저에 직접 전송됨
+            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            time.sleep(0.01)
+    # 응답 객체에 generate()함수 넘김
+    return Response(generate(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 #파일 업로드 처리
