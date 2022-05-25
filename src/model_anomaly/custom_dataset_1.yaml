@@ -1,0 +1,7 @@
+path: /content/drive/MyDrive/custom_dataset  #root 디렉토리
+train: /content/drive/MyDrive/custom_dataset/train_1.txt  # 학습데이터 경로
+val: /content/drive/MyDrive/custom_dataset/val_1.txt
+
+# Classes
+nc: 20  #  class 개수
+names: [ "turnstile_trespassing", "turnstile_wrong_direction", "stairway_fall", "property_damage", "spy_camera", "wandering", "fainting", "escalator_fall", "unattended", "theft", "public_intoxication", "assault", "surrounding_fall", "wheelchair", "blind", "stroller", "drunk", "merchant", "child", "person"]  # class 이름들
