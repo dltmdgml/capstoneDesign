@@ -7,7 +7,7 @@
 ### 요구사항
 
 ### 아키텍처
-
+![architecture](imgs_for_readmefile/architecture.PNG)
 ### 설계
 #### UI 설계서
 ![main.html](imgs_for_readmefile/main.html.PNG)
