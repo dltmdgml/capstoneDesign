@@ -14,9 +14,14 @@
 ![UI설계서_3](imgs_for_readmefile/UI_3.PNG)
 ![UI설계서_4](imgs_for_readmefile/UI_4.PNG)
 ### 프로젝트 내용
-- 데이터 준비<br>
-  [지하철 역사 내 CCTV 이상행동 영상 이미지](https://aihub.or.kr/aidata/34122) 
+- 데이터 준비
+  - 데이터 세트 생성 
+    [지하철 역사 내 CCTV 이상행동 영상 이미지](https://aihub.or.kr/aidata/34122)
+  - dataset.yaml 생성
+  - 라벨 생성
+    ![]()
 - 데이터 전처리
+  .json -> .txt
 - 모델 학습
 - 모델 테스트
 - 웹 페이지 & 서버 개발
