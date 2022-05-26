@@ -6,7 +6,7 @@
 ### 프로젝트 내용
 - 데이터 준비
   - 데이터 다운로드 <br>
-    [지하철 역사 내 CCTV 이상행동 영상 이미지](https://aihub.or.kr/aidata/34122)
+    [지하철 역사 내 CCTV 이상행동 영상 이미지](https://aihub.or.kr/aidata/34122) <br>
     13개의 이상행동 데이터 + 7개의 객체 데이터
   - dataset.yaml 생성
     ```
