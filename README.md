@@ -55,6 +55,5 @@
 ![UI설계서_2](imgs_for_readmefile/UI_2.PNG)
 ![UI설계서_3](imgs_for_readmefile/UI_3.PNG)
 ![UI설계서_4](imgs_for_readmefile/UI_4.PNG)
-
-
 ### 테스트
+![테스트](imgs_for_readmefile/test.PNG)
