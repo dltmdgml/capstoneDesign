@@ -10,7 +10,7 @@
     13개의 이상행동 데이터 + 7개의 객체 데이터
   - dataset.yaml 생성
     ```
-    path: /content/drive/MyDrive/custom_dataset  #root 디렉토리
+    path: /content/drive/MyDrive/custom_dataset  # root 디렉토리
     train: /content/drive/MyDrive/custom_dataset/train.txt  # 학습데이터 경로
     val: /content/drive/MyDrive/custom_dataset/val.txt
 
@@ -38,6 +38,7 @@
   - 라벨 생성
     ![label_made](imgs_for_readmefile/annotation.PNG)
 - 모델 학습
+  [yolov5m](https://github.com/ultralytics/yolov5) 사용 <br>
   image size: 640(권장) <br>
   batch size: 32(컴퓨터 메모리가 수행할 수 있는 가장 큰 batch size 권장) <br>
   epoch number: 300(권장) <br>
