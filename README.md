@@ -62,5 +62,5 @@
 | File/Directory | Decscription |
 | ------ | ------ |
 | [src](src) | 프로젝트 전체 소스 |
-| [img_for_test][img_for_test] |test를 위한 이미지와 동영상 |
+| [imgㄴ_for_test][imgㄴ_for_test] |test를 위한 이미지와 동영상 |
 | [시연영상][시연영상-LK팀.mp4] | 시연영상 |
