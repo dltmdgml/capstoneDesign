@@ -43,7 +43,8 @@
   batch size: 32(컴퓨터 메모리가 수행할 수 있는 가장 큰 batch size 권장) <br>
   epoch number: 300(권장) <br>
 - 모델 테스트
-- 웹 페이지 & 서버 개발
+- 모델의 결과 시각화
+  웹 페이지 구현과 웹 서버를 구축하며 결과를 한눈에 알아보기 쉽도록 하였습니다.
 ### 일정
 ![일정](imgs_for_readmefile/schedule.PNG)
 ### 요구사항
@@ -57,3 +58,9 @@
 ![UI설계서_4](imgs_for_readmefile/UI_4.PNG)
 ### 테스트
 ![테스트](imgs_for_readmefile/test.PNG)
+### FILE STRUCTURE
+| File/Directory | Decscription |
+| ------ | ------ |
+| [src](src) | 프로젝트 전체 소스 |
+| [img_for_test][img_for_test] |test를 위한 이미지와 동영상 |
+| [시연영상][시연영상-LK팀.mp4] | 시연영상 |
