@@ -5,7 +5,7 @@
 ### 일정
 
 ### 요구사항
-![요구사항명세서_1](imgs_for_readmefile/requirements_analysis_1.png)
+![요구사항명세서_1](imgs_for_readmefile/requirements_analysis_1.PNG)
 ### 아키텍처
 ![architecture](imgs_for_readmefile/architecture.PNG)
 ### 설계
