@@ -15,14 +15,29 @@
 ![UI설계서_4](imgs_for_readmefile/UI_4.PNG)
 ### 프로젝트 내용
 - 데이터 준비
-  - 데이터 세트 생성 
+  - 데이터 다운로드 
     [지하철 역사 내 CCTV 이상행동 영상 이미지](https://aihub.or.kr/aidata/34122)
+    13개의 이상행동 데이터 + 7개의 객체 데이터
   - dataset.yaml 생성
-  - 라벨 생성
-    ![]()
+    ```
+    path: /content/drive/MyDrive/custom_dataset  #root 디렉토리
+    train: /content/drive/MyDrive/custom_dataset/train.txt  # 학습데이터 경로
+    val: /content/drive/MyDrive/custom_dataset/val.txt
+
+    # Classes
+    nc: 20  #  class 개수
+    names: [ "turnstile_trespassing", "turnstile_wrong_direction", "stairway_fall", "property_damage", "spy_camera", "wandering", "fainting", "escalator_fall", "unattended", "theft", "public_intoxication", "assault", "surrounding_fall", "wheelchair", "blind", "stroller", "drunk", "merchant", "child", "person"]  # class 이름들
+    ```
 - 데이터 전처리
-  .json -> .txt
+  - 라벨 생성
+    ![label_made](imgs_for_readmefile/annotation.PNG)
 - 모델 학습
+  image size: 640(권장)
+  batch size: 32(컴퓨터 메모리가 수행할 수 있는 가장 큰 batch size 권장)
+  epoch number: 300(권장)
+  ```
+  !python train.py --img 640 --batch 32 --epoch 300 --data [dataset.yaml path] --weight [weight path(.pt)]
+  ```
 - 모델 테스트
 - 웹 페이지 & 서버 개발
 ### 테스트
