@@ -42,7 +42,7 @@ def send_the_message(class_name):
     if response.json().get('result_code') == 0:
         print('메시지를 성공적으로 보냈습니다.')
     else:
-        print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))  # 오류 발생시 토큰 다시 발급받아야 함
+        # print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))  # 오류 발생시 토큰 다시 발급받아야 함
         print(msg_content)
 
 # model result(xy point, predict score, class) parse
@@ -63,7 +63,7 @@ def plot_boxes(results, frame):
     for i in range(n):
         row = cord[i]
         # If score is less than 0.2 we avoid making a prediction.
-        if row[4] < 0.2: 
+        if row[4] < 0.45: 
             continue
         x1 = int(row[0]*x_shape)
         y1 = int(row[1]*y_shape)
@@ -74,6 +74,8 @@ def plot_boxes(results, frame):
         classes = model.names # Get the name of label index
         label_font = cv2.FONT_HERSHEY_SIMPLEX #Font for the label.
         text = classes[int(labels[i])]
+        if text == "person":
+            continue
         size, BaseLine = cv2.getTextSize(text,label_font,box_h*0.003,1)
         cv2.rectangle(frame, \
                       (x1, y1), (x2, y2), \
@@ -87,7 +89,7 @@ def plot_boxes(results, frame):
         class_name = str(classes[int(labels[i])])
         if class_name in classes_cnts: 
             classes_cnts[class_name] += 1
-            if classes_cnts[class_name] >= 10:
+            if classes_cnts[class_name] >= 30:
                 classes_cnts[class_name] = 0  # count 초기화
                 send_the_message(class_name)
 
@@ -118,9 +120,12 @@ def Streaming():
 @app.route('/video_feed')
 def video_feed():
     def generate(): # 데이터를 생성하는 생성기
-        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # webcam
+        # cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # webcam
+        cap = cv2.VideoCapture('./test/spy.mp4')
         while 1:
             ret, img = cap.read()
+            if ret == 0:
+                break
             # img = cv2.flip(img, 1) #좌우 반전
             results = score_frame(img, model)
             frame = plot_boxes(results, img)
@@ -139,6 +144,9 @@ def video_feed():
 @app.route('/FileUpload', methods=['GET','POST'])
 def FileUpload():
     if request.method == 'POST':
+        [os.remove(f) for f in glob.glob('./uploads/images/*')]
+        [os.remove(f) for f in glob.glob('./uploads/videos/*')]
+        
         file = request.files['file']
         filename = secure_filename(file.filename)
         ext_text = os.path.splitext(filename)[1]
@@ -147,18 +155,19 @@ def FileUpload():
             start = time.time()
             file.save(os.path.join(app.config['UPLOAD_VIDEO_FOLDER'], filename))
             print('video upload success')
-            subprocess.run(['python', './yolov5/detect.py', '--weights', 'model_anomaly/best.pt', '--img', '640', '--source', app.config['UPLOAD_VIDEO_FOLDER'], '--data', 'model_anomaly/custom_dataset_1.yaml'])
+            subprocess.run(['python', './yolov5/detect.py', '--weights', 'model_anomaly/best_26.pt', '--img', '640', '--source', os.path.join(app.config['UPLOAD_VIDEO_FOLDER'], filename), '--data', 'model_anomaly/custom_dataset_1.yaml'])
             print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
         # IMAGE
         elif ext_text in img_ext:
             start = time.time()
             file.save(os.path.join(app.config['UPLOAD_IMAGE_FOLDER'], filename))
             print('image upload success')
-            img = cv2.imread(os.path.join(app.config['UPLOAD_IMAGE_FOLDER'], filename))   
+            subprocess.run(['python', './yolov5/detect.py', '--weights', 'model_anomaly/best_26.pt', '--img', '640', '--source', os.path.join(app.config['UPLOAD_IMAGE_FOLDER'], filename), '--data', 'model_anomaly/custom_dataset_1.yaml'])
+            # img = cv2.imread(os.path.join(app.config['UPLOAD_IMAGE_FOLDER'], filename))   
             # img = cv2.resize(img, (0,0), fx=0.7, fy=0.7)
-            results = score_frame(img, model)
-            frame = plot_boxes(results, img)
-            cv2.imwrite(os.path.join('static/exp/', filename), frame)
+            # results = score_frame(img, model)
+            # frame = plot_boxes(results, img)
+            # cv2.imwrite(os.path.join('static/exp/', filename), frame)
             print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
         else:
             ext_text = ""
@@ -182,16 +191,16 @@ if __name__ == '__main__':
     cnt10=0 
     cnt11=0 
     cnt12=0
-    cnt13=0
-    cnt14=0
+    # cnt13=0
+    # cnt14=0
     
     classes_cnts = { "turnstile_trespassing": cnt0, "turnstile_wrong_direction": cnt1, "stairway_fall": cnt2, \
                         "property_damage": cnt3, "spy_camera" : cnt4, "wandering" : cnt5, "fainting" : cnt6, \
                         "escalator_fall" : cnt7, "unattended" : cnt8, "theft" : cnt9, "public_intoxication" : cnt10, \
-                        "assault" : cnt11, "surrounding_fall" : cnt12, "person" : cnt13, "cup" : cnt14 }
+                        "assault" : cnt11, "surrounding_fall" : cnt12} #"person" : cnt13, "cup" : cnt14 }
     
     # 모델 로드
-    # model = torch.hub.load('ultralytics/yolov5', 'custom', path='model_anomaly/best.pt')
-    model = torch.hub.load('ultralytics/yolov5', 'yolov5m')
+    model = torch.hub.load('ultralytics/yolov5', 'custom', path='model_anomaly/best_26.pt')
+    # model = torch.hub.load('ultralytics/yolov5', 'yolov5m')
 
     app.run(host="0.0.0.0", port=80, debug=True)
