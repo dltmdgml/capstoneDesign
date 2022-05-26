@@ -63,7 +63,7 @@
 | ------ | ------ |
 | [src](src) | 프로젝트 전체 소스 |
 | [imgs_for_test](imgs_for_test) |test를 위한 이미지와 동영상 |
-| [포스터](\[22년 1학기 캡스톤-포스터-LK(이승희)\].pptx) | 포스터 PPT |
+| [포스터]([22년 1학기 캡스톤-포스터-LK(이승희)].pptx) | 포스터 PPT |
 | [포스터]([22년 1학기 캡스톤-포스터-LK(이승희)].pdf) | 포스터 PDF |
 | [발표자료](발표.pptx) | 발표자료 PPT |
 | [시연영상](시연영상-LK팀.mp4) | 시연영상 |
@@ -71,3 +71,14 @@
 
 **소스 코드 테스트 시 [src] 폴더 아래에서 실행**<br>
 **flask와 yolov5 종속성 설치 필요**
+anaconda prompt 실행 <br>
+'''
+pip install flask
+cd [your_path]/src/
+pip install -r yolov5/requirements.txt
+'''
+vscode에서 실행 <br>
+마켓플레이스에서 flask-snippets, python 설치 <br>
+ctrl + shiht + p > python:select interpreter > flask가 설치되어 있는 환경 선택<br>
+[your_path]/src/ 폴더 열기 > app.py 실행 <br>
+터미널에 출력되는 주소로 접속하여 테스트
