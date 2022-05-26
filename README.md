@@ -70,7 +70,7 @@
 | [결과보고서](2022년_1학기_캡스톤디자인_결과보고서.hwp) | 결과보고서 |
 
 **소스 코드 테스트 시 [src] 폴더 아래에서 실행**<br>
-**flask와 yolov5 종속성 설치 필요**
+**flask와 yolov5 종속성 설치 필요** <br>
 anaconda prompt 실행 <br>
 ```code
 pip install flask
