@@ -77,11 +77,12 @@ pip install flask
 cd [your_path]/src/
 pip install -r yolov5/requirements.txt
 ```
+
 1. annaconda prompt에서 실행
 ```
 cd [your_path]/src/
 python app.py
-``` <br>
+``` 
 Running on https://~ <br>
 브라우저 주소창에 https://~ 입력 <br>
 
@@ -90,7 +91,7 @@ or
 ```
 cd [your_path]/src/
 flask run
-``` <br>
+``` 
 Running on https://~ <br>
 브라우저 주소창에 https://~ 입력 <br>
 
