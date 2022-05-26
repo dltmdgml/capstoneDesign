@@ -49,7 +49,7 @@
 ### 요구사항
 ![요구사항명세서_1](imgs_for_readmefile/requirments_analysis.PNG)
 ### 아키텍처
-![architecture](imgs_for_readmefile/architecture.PNG)
+![architecture](imgs_for_readmefile/architecture1.PNG)
 ### 설계
 #### UI 설계서
 ![UI설계서_2](imgs_for_readmefile/UI_2.PNG)
