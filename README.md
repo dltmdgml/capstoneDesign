@@ -45,7 +45,7 @@
 - 모델 테스트
 - 웹 페이지 & 서버 개발
 ### 일정
-
+![일정](imgs_for_readmefile/schedule.PNG)
 ### 요구사항
 ![요구사항명세서_1](imgs_for_readmefile/requirments_analysis.PNG)
 ### 아키텍처
