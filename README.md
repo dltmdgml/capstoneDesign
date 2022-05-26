@@ -62,5 +62,9 @@
 | File/Directory | Decscription |
 | ------ | ------ |
 | [src](src) | 프로젝트 전체 소스 |
-| [imgㄴ_for_test][imgs_for_test] |test를 위한 이미지와 동영상 |
-| [시연영상][[시연영상-LK팀.mp4](https://github.com/dltmdgml/capstoneDesign/blob/64c27aa45c858e00a5295db30d29ff5521e0e600/%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81-LK%ED%8C%80.mp4)] | 시연영상 |
+| [imgs_for_test](imgs_for_test) |test를 위한 이미지와 동영상 |
+| [포스터]() | 포스터 PPT |
+| [포스터]() | 포스터 PDF |
+| [발표자료](발표.pptx) | PPT |
+| [시연영상](시연영상-LK팀.mp4) | 시연영상 |
+| [결과보고서(.hwp)]() | 결과보고서 |
