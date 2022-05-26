@@ -72,7 +72,7 @@
 **소스 코드 테스트 시 [src] 폴더 아래에서 실행**<br>
 **flask와 yolov5 종속성 설치 필요**
 anaconda prompt 실행 <br>
-'''
+'''code
 pip install flask
 cd [your_path]/src/
 pip install -r yolov5/requirements.txt
