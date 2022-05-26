@@ -83,11 +83,7 @@ pip install -r yolov5/requirements.txt
 cd [your_path]/src/
 python app.py
 ``` 
-Running on https://~ <br>
-브라우저 주소창에 https://~ 입력 <br>
-
 or 
-
 ```
 cd [your_path]/src/
 flask run
