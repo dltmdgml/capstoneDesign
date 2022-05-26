@@ -10,9 +10,9 @@
 ![architecture](imgs_for_readmefile/architecture.PNG)
 ### 설계
 #### UI 설계서
-![main.html](imgs_for_readmefile/main.html.PNG)
-![subPage1.html](imgs_for_readmefile/subPage1.html.PNG)
-![subPage2.html](imgs_for_readmefile/subPage2.html.PNG)
+![UI설계서_2](imgs_for_readmefile/UI설계서_2.PNG)
+![UI설계서_3](imgs_for_readmefile/UI설계서_3.PNG)
+![UI설계서_4](imgs_for_readmefile/UI설계서_4.PNG)
 ### 프로젝트 내용
 - 데이터 준비
 - 데이터 전처리
