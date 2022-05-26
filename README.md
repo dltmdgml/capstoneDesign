@@ -34,7 +34,6 @@
           │   └── Part2
           ├── train.txt
           └── validation.txt
-      ``` 
 - 데이터 전처리
   - 라벨 생성
     ![label_made](imgs_for_readmefile/annotation.PNG)
