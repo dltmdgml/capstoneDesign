@@ -15,6 +15,7 @@
 ![UI설계서_4](imgs_for_readmefile/UI_4.PNG)
 ### 프로젝트 내용
 - 데이터 준비
+  (지하철 역사 내 CCTV 이상행동 영상 이미지)[https://aihub.or.kr/aidata/34122]
 - 데이터 전처리
 - 모델 학습
 - 모델 테스트
