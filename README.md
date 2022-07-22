@@ -62,7 +62,7 @@
 | File/Directory | Decscription |
 | ------ | ------ |
 | [src](src) | 프로젝트 전체 소스 |
-| [imgs_for_test](imgs_for_test) |test를 위한 이미지와 동영상 |
+| [테스트](imgs_for_test) |test를 위한 이미지와 동영상 |
 | [발표자료](발표.pptx) | 발표자료 PPT |
 | [시연영상](시연영상-LK팀.mp4) | 시연영상 |
 | [결과보고서](2022년_1학기_캡스톤디자인_결과보고서.hwp) | 결과보고서 |
